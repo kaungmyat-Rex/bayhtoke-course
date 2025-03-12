@@ -15,15 +15,15 @@ const CourseHero = ({
 }) => {
   const [isFixed] = useThresholdScroll();
   return (
-    <div className="w-full relative lg:h-[500px]">
+    <div className="w-full relative h-[350px] lg:h-[500px]">
       <div className="absolute w-full h-full bg-black opacity-80 z-10" />
       <Image
-        className="absolute -right-[750px] -top-[600px] z-20 w-full"
+        className="absolute -right-[300px] -top-[200px] md:-right-[500px] md:-top-[600px] lg:-right-[750px] lg:-top-[600px] -z-30 w-full xl:-right-[750px] xl:-top-[600px]"
         alt="bgSvg"
         src={bgGradient}
       />
       <Image
-        className="absolute -left-[750px] -top-[300px] -z-30 w-full"
+        className="absolute -left-[270px] sm:-left-[300px] -z-30 w-full md:-left-[500px] lg:-left-[750px] xl:-left-[750px]"
         alt="bgSvg"
         src={bgGradient}
       />
@@ -33,21 +33,21 @@ const CourseHero = ({
         layout="fill"
         objectFit="cover"
       />
-      <div className="flex justify-between items-center z-20 absolute w-full h-full px-[150px] gap-x-10 top-[50%] -translate-y-[50%]">
+      <div className="flex justify-between items-center z-20 absolute w-full h-full px-[20px] lg:px-[90px] xl:px-[160px] gap-x-10 top-[50%] -translate-y-[50%]">
         <div className="flex-[7]">
-          <p className="text-[#FD660E] text-base font-medium my-7">
+          <p className="text-[#FD660E] text-base font-medium my-3 md:my-7">
             အခု course ကတော့
           </p>
-          <h4 className="text-white text-[50px] font-montserrat font-bold leading-[70px] mb-3">
+          <h4 className="text-white text-[30px] md:text-[50px] font-montserrat font-bold md:leading-[70px] leading-[30px] mb-3">
             {singleCourseData?.courseName}
           </h4>
-          <p className="text-[17px] text-[#CCCCCC] font-nunito">
+          <p className="text-[15px] md:text-[17px] text-[#CCCCCC] font-nunito">
             {singleCourseData?.courseIntro}
           </p>
         </div>
-        <div className=" flex-[4] relative">
+        <div className="flex-[0] md:flex-[4] relative">
           <div
-            className={`max-w-[320px] w-full px-[10px] pt-[10px] border border-[#2D333E] bg-[#141B23] rounded-xl absolute ${
+            className={`max-w-[320px] hidden md:block mt-10 md:mt-0 w-full px-[10px] pt-[10px] border border-[#2D333E] bg-[#141B23] rounded-xl absolute ${
               isFixed ? " top-[300px] transition-all" : "top-0 transition-all"
             }`}
           >

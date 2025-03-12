@@ -166,13 +166,14 @@
   backdrop-filter: blur(16px);
   clip-path: circle(0% at 90% 10%);
 
-  z-index: 2;
+  z-index: 30;
   transition: 300ms ease-out;
 }
 
 .sidenav-section-show {
   clip-path: circle(130% at 90% 10%);
   transition: 300ms ease-in;
+  z-index: 30;
 }
 
 /* @keyframes topToBottom {

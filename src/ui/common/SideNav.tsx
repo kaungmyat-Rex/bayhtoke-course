@@ -14,8 +14,10 @@ interface Props {
 
 const SideNav = ({ toggle, MENU, pathname, setToggle }: Props) => {
   return (
-    <div className={`sidenav-section ${toggle ? "sidenav-section-show" : ""}`}>
-      <div className="w-full mt-16 px-[20px] pt-[70px] relative">
+    <div
+      className={`sidenav-section ${toggle ? "sidenav-section-show" : ""} z-40`}
+    >
+      <div className="w-full mt-16 px-[20px] pt-[70px] relative z-40">
         <nav className="flex flex-col items-end justify-center gap-y-[20px]">
           {MENU.map((item) => {
             return (
