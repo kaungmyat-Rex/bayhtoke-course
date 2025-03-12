@@ -1,9 +1,12 @@
 import { getCourse, getCourses } from "@/server/actions";
-import React from "react";
+import React, { cache } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import CourseHero from "./_components/CourseHero";
 import Link from "next/link";
+import defaultOpengraphImage from "../../../opengraph-image.png";
 type Params = Promise<{ courseId: string }>;
+
+const cacheGetCourse = cache(getCourse);
 
 export async function generateStaticParams() {
   const courseData = await getCourses();
@@ -13,9 +16,30 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: { params: Params }) {
+  const { courseId } = await params;
+  const courseData = await cacheGetCourse(courseId);
+
+  return {
+    title: courseData.courseName,
+    openGraph: {
+      title: courseData.courseName,
+      type: "website",
+      images: [
+        {
+          url: courseData.courseImg || defaultOpengraphImage,
+          width: 1200,
+          height: 630,
+          alt: courseData.courseName,
+        },
+      ],
+    },
+  };
+}
+
 const page = async ({ params }: { params: Params }) => {
   const { courseId } = await params;
-  const singleCourseData = await getCourse.bind(null, courseId)();
+  const singleCourseData = await cacheGetCourse.bind(null, courseId)();
 
   const formatSingleCourseData = {
     courseTag: singleCourseData.courseTag,

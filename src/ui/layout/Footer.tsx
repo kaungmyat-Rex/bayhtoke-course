@@ -3,6 +3,7 @@ import logoImg from "../../../public/logoImage/bayhtokelogo.png";
 import Image from "next/image";
 import { FiFacebook } from "react-icons/fi";
 import { PiTiktokLogoLight, PiTelegramLogo } from "react-icons/pi";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -25,19 +26,25 @@ const Footer = () => {
 
       <div className="flex justify-center items-center gap-x-[10px]">
         <p className="text-[#CCCCCC] text-[14px] font-normal">Follow us on</p>
-
-        <FiFacebook
-          size={28}
-          className="text-[#CCCCCC] border-2 border-[#CCCCCC] p-[3px] rounded-full hover:bg-[#CBCED3] hover:text-black cursor-pointer"
-        />
+        <Link
+          target="_blank"
+          href={"https://www.facebook.com/share/1P1phwHWwc/?mibextid=wwXIfr"}
+        >
+          <FiFacebook
+            size={28}
+            className="text-[#CCCCCC] border-2 border-[#CCCCCC] p-[3px] rounded-full hover:bg-[#CBCED3] hover:text-black cursor-pointer"
+          />
+        </Link>
         <PiTiktokLogoLight
           size={28}
           className="text-[#CCCCCC] border-2 border-[#CCCCCC] p-[3px] rounded-full hover:bg-[#CBCED3] hover:text-black cursor-pointer"
         />
-        <PiTelegramLogo
-          size={28}
-          className="text-[#CCCCCC] border-2 border-[#CCCCCC] p-[3px] rounded-full hover:bg-[#CBCED3] hover:text-black cursor-pointer"
-        />
+        <Link href={"https://t.me/+KlCZqmt-ui5lMmNl"} target="_blank">
+          <PiTelegramLogo
+            size={28}
+            className="text-[#CCCCCC] border-2 border-[#CCCCCC] p-[3px] rounded-full hover:bg-[#CBCED3] hover:text-black cursor-pointer"
+          />
+        </Link>
       </div>
     </footer>
   );
