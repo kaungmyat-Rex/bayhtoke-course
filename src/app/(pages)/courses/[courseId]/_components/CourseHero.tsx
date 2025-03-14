@@ -23,7 +23,7 @@ const CourseHero = ({
         src={bgGradient}
       />
       <Image
-        className="absolute -left-[270px] sm:-left-[300px] -z-30 w-full md:-left-[500px] lg:-left-[750px] xl:-left-[750px]"
+        className="absolute -top-[300px] -left-[270px] sm:-left-[300px] -z-30 w-full md:-left-[500px] lg:-left-[750px] xl:-left-[750px]"
         alt="bgSvg"
         src={bgGradient}
       />
