@@ -8,7 +8,8 @@ import FaqItem from "@/ui/common/FaqItem";
 import CourseList from "@/ui/common/CourseList";
 import { getCourses } from "@/server/actions";
 import Link from "next/link";
-
+import ScrollDown from "@/ui/common/ScrollDown";
+export const revalidate = 300;
 const Home = async () => {
   //course data fetch (server action)
   const courseData = await getCourses();
@@ -35,7 +36,7 @@ const Home = async () => {
       />
       <BgSvgDotGp />
       <div className="flex flex-row justify-between items-center w-full pt-[150px] gap-x-[150px] pb-[200px]">
-        <div>
+        <div className="relative">
           <h1 className="text-white font-medium text-[30px] md:text-[45px] lg:text-[50px] xl:text-[50px]">
             မင်္ဂလာပါ 
             <br />
@@ -54,6 +55,9 @@ const Home = async () => {
             >
               Contact Us
             </Link>
+          </div>
+          <div className="absolute left-[47%] -translate-x-[50%] -bottom-[100px] block sm:hidden">
+            <ScrollDown />
           </div>
         </div>
         <Image

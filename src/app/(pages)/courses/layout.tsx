@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description:
     "Learn More, Pay Less – Affordable Online Courses form Udemy, Domestika and so on",
 };
-
+export const revalidate = 300;
 const CourseLayout = ({ children }: { children: React.ReactNode }) => {
   return <section>{children}</section>;
 };
