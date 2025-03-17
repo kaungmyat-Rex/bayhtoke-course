@@ -53,6 +53,8 @@ const page = async ({ params }: { params: Params }) => {
     courseOriginLink: singleCourseData.courseOriginLink,
     originPrice: singleCourseData.originPrice,
     courseImg: singleCourseData.courseImg,
+    isFree: singleCourseData.isFree,
+    courseGmailUrl: singleCourseData.courseGmailUrl,
     date: {
       seconds: singleCourseData.date.seconds,
       nanoseconds: singleCourseData.date.nanoseconds,

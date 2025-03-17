@@ -21,8 +21,10 @@ export interface courseType {
   courseAuthor: string;
   courseIntro: string;
   courseDescription: string;
+  courseGmailUrl: string;
   date: { seconds: number; nanoseconds: number };
   courseImg: string;
+  isFree: boolean;
 }
 
 export interface singleCourseDataType {
@@ -35,5 +37,7 @@ export interface singleCourseDataType {
   courseOriginLink: string;
   originPrice: number;
   courseImg: string;
+  courseGmailUrl: string;
   date: { seconds: number; nanoseconds: number };
+  isFree: boolean;
 }

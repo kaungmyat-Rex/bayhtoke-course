@@ -13,6 +13,7 @@ interface props {
   courseImg: string;
   courseAuthor: string;
   isNew: boolean;
+  isFree: boolean;
   originPrice: number;
 }
 
@@ -25,6 +26,7 @@ const CourseCardItem = ({
   isNew,
   courseAuthor,
   originPrice,
+  isFree,
 }: props) => {
   const [mouseTrack, setMouseTrack] = useState<boolean>(false);
 
@@ -64,7 +66,9 @@ const CourseCardItem = ({
                 </Link>
                 <Link
                   href={`/payment/${id}?courseName=${courseName}&coursePrice=${coursePrice}`}
-                  className="bounceAnimationReverse flex justify-center items-center border border-white gap-x-1 rounded-md p-1 cursor-pointer hover:bg-white group/test"
+                  className={`bounceAnimationReverse flex justify-center items-center border border-white gap-x-1 rounded-md p-1 cursor-pointer hover:bg-white group/test ${
+                    isFree ? "invisible" : "visible"
+                  }`}
                 >
                   <BiPurchaseTagAlt
                     size={24}
@@ -96,7 +100,7 @@ const CourseCardItem = ({
                 ${originPrice}
               </p>
               <p className="text-[#FD660E] font-bold text-[15px]">
-                {coursePrice}ks
+                {isFree ? <span>Free</span> : <span>{coursePrice}ks</span>}
               </p>
             </div>
           </div>

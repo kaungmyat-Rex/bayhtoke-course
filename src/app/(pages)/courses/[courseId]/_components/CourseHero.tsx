@@ -89,18 +89,34 @@ const CourseHero = ({
                 <span className="text-[#9a9a9a] font-bold line-through decoration-[1.5px] decoration-[#FD660E]">
                   ${singleCourseData?.originPrice}
                 </span>{" "}
-                <span className="text-[#FD660E] font-bold">
-                  {singleCourseData?.coursePrice} Ks
-                </span>
+                {singleCourseData?.isFree ? (
+                  <span className="text-[#FD660E] font-bold">Free</span>
+                ) : (
+                  <span className="text-[#FD660E] font-bold">
+                    {singleCourseData?.coursePrice} Ks
+                  </span>
+                )}
               </p>
-              <Link
-                href={`/payment/${courseId}?courseName=${singleCourseData.courseName}&coursePrice=${singleCourseData.coursePrice}`}
-                className="w-full border border-[#FD660E] rounded-xl flex justify-center items-center mt-[16px] mb-[10px] hover:text-white hover:bg-[#FD660E] transition-all duration-300 group/cardBtn"
-              >
-                <p className="text-[#FD660E] py-2 group-hover/cardBtn:text-white transition-all duration-300">
-                  ဝယ်မည်
-                </p>
-              </Link>
+              {singleCourseData?.isFree ? (
+                <Link
+                  href={`${singleCourseData.courseGmailUrl}`}
+                  target="_blank"
+                  className="w-full border border-[#FD660E] rounded-xl flex justify-center items-center mt-[16px] mb-[10px] hover:text-white hover:bg-[#FD660E] transition-all duration-300 group/cardBtn"
+                >
+                  <p className="text-[#FD660E] py-2 group-hover/cardBtn:text-white transition-all duration-300">
+                    Download Link
+                  </p>
+                </Link>
+              ) : (
+                <Link
+                  href={`/payment/${courseId}?courseName=${singleCourseData.courseName}&coursePrice=${singleCourseData.coursePrice}`}
+                  className="w-full border border-[#FD660E] rounded-xl flex justify-center items-center mt-[16px] mb-[10px] hover:text-white hover:bg-[#FD660E] transition-all duration-300 group/cardBtn"
+                >
+                  <p className="text-[#FD660E] py-2 group-hover/cardBtn:text-white transition-all duration-300">
+                    ဝယ်မည်
+                  </p>
+                </Link>
+              )}
             </div>
           </div>
         </div>

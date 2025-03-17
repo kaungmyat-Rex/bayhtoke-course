@@ -82,6 +82,7 @@ const CourseList = ({ ShowOnlyNew, courseData }: props) => {
                       originPrice={course.originPrice}
                       courseImg={course.courseImg}
                       courseAuthor={course.courseAuthor}
+                      isFree={course.isFree}
                       isNew={true}
                     />
                   </div>
@@ -99,6 +100,7 @@ const CourseList = ({ ShowOnlyNew, courseData }: props) => {
                         originPrice={course.originPrice}
                         courseImg={course.courseImg}
                         courseAuthor={course.courseAuthor}
+                        isFree={course.isFree}
                         isNew={false}
                       />
                     </div>
