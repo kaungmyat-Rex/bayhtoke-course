@@ -11,7 +11,7 @@ import { MdOutlineNotificationImportant } from "react-icons/md";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Image from "next/image";
 import { TiDelete } from "react-icons/ti";
-
+import Resizer from "react-image-file-resizer";
 import { useParams, useSearchParams } from "next/navigation";
 
 interface FileChangeEvent extends React.ChangeEvent<HTMLInputElement> {
@@ -47,15 +47,18 @@ const BillingFormElements = () => {
       formData.append("email", data.email);
       formData.append("phone", data.phone);
       const imageUrl = await imageUpload(paymentImage);
-
-      const status = await createBilling(
-        formData,
-        courseId as string,
-        imageUrl,
-        searchparam.get("courseName") as string,
-        searchparam.get("coursePrice") as string
-      );
-      toast(status.message);
+      if (imageUrl) {
+        const status = await createBilling(
+          formData,
+          courseId as string,
+          imageUrl,
+          searchparam.get("courseName") as string,
+          searchparam.get("coursePrice") as string
+        );
+        toast(status.message);
+      } else {
+        toast("Image upload failed. Please try again.");
+      }
     }
   };
 
@@ -74,7 +77,23 @@ const BillingFormElements = () => {
     const file = e.target.files?.[0];
 
     if (file) {
-      setPaymentImage(file);
+      if (file) {
+        Resizer.imageFileResizer(
+          file,
+          800, // max width
+          800, // max height
+          "JPEG", // format
+          70, // quality (0 to 100)
+          0, // rotation
+          (uri) => {
+            setPaymentImage(
+              new File([uri as Blob], file.name, { type: file.type })
+            ); // Convert Blob to File
+          },
+          "blob" // you can also use 'base64'
+        );
+      }
+
       setPreview(URL.createObjectURL(file));
     }
   };
